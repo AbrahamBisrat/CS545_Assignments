@@ -1,14 +1,10 @@
 package com.waaAssig.Assignment.config;
 
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InjectionPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -24,23 +20,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-@Slf4j
+@Order
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-	@Autowired @Lazy // avoid circular reference, load them lazily
+	@Autowired // @Lazy // avoid circular reference
 	private UserDetailsService jwtUserDetailsService;
 
-	@Autowired
+	@Autowired //@Lazy
 	private JwtRequestFilter jwtRequestFilter;
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// configure AuthenticationManager so that it knows from where to load
-		// user for matching credentials
-		// Use BCryptPasswordEncoder
 		auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
 	}
 

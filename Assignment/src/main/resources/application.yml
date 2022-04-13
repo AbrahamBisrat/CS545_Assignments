@@ -24,8 +24,8 @@ spring:
     init:
       mode: always
   main:
-    banner-mode: "off"
-#    allow-circular-references: true
+    banner-mode: "console"
+    allow-circular-references: true
 
 server:
   port: 4000
