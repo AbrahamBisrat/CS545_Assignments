@@ -21,7 +21,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @Order
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -65,13 +64,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Add a filter to validate the tokens with every request
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
-
-//	// logger
-//	@Bean @Lazy
-//	@Scope("prototype")
-//	public Logger produceLogger(InjectionPoint injectionPoint) {
-//		Class<?> classOnWired = injectionPoint.getMember().getDeclaringClass();
-//		return LoggerFactory.getLogger(classOnWired);
-//	}
 
 }
