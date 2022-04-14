@@ -1,5 +1,6 @@
 package com.waaAssig.Assignment.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,11 +20,11 @@ public class Users {
     private Long id;
 
     private String username;
+    @JsonIgnore
     private String password;
     private String firstName;
     private String lastName;
     private boolean enabled;
-    
 
     @OneToMany( mappedBy = "user", cascade = CascadeType.ALL )
     @JsonManagedReference
@@ -32,5 +33,4 @@ public class Users {
     @ManyToMany
     @JoinTable
     private List<Role> roles;
-
 }
