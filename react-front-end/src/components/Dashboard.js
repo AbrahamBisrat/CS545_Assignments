@@ -7,6 +7,10 @@ class Dashboard extends Component {
       <div className="dashboard">
         <h2>hellow again</h2>
         <Posts />
+        <form action="">
+          <input type="text" />
+          <input type="submit" value="Change stuff" />
+        </form>
       </div>
     );
   }

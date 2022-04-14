@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+let p = (text) => console.log(text);
 
-class Post extends Component {
-  render() {
-    return (
-      <div className="post">
-        {console.log("hellow from post component ")}
-        {console.log(this.props)}
-        <h2>Post</h2>
-      </div>
-    );
-  }
+function Post({ post, updateSelectedPost, selectedId }) {
+  return (
+    <div className="post" onClick={() => updateSelectedPost(post.id)}>
+      <h2>Id : {post.id}</h2>
+      <h2>Title : {post.title}</h2>
+      <h2>Author : {post.author}</h2>
+    </div>
+  );
 }
 
 export default Post;
