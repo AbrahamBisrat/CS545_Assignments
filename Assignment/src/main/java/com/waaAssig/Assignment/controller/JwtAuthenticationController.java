@@ -21,7 +21,7 @@ public class JwtAuthenticationController {
 //		return ResponseEntity.ok(userDetailsService.save(user));
 //	}
 
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+	@PostMapping("/authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
 			throws Exception {
 		return ResponseEntity.ok(authService.login(authenticationRequest));
