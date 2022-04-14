@@ -3,13 +3,9 @@ spring:
     name: Lab2
   datasource:
     url: jdbc:mysql://172.17.18.6:3306/waaAssigDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: reconov
-    password: reconov
-#    password: ${DB_PASSWORD}
-#    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    username: ${DB_USER}
   #    url: jdbc:mysql://localhost:3306/waa_assignmentDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-  #    username: 'root'
-  #    password: 'password'
   jpa:
     hibernate:
       ddl-auto: update
