@@ -10,6 +10,7 @@ export default function Posts() {
   ];
 
   let [selectedPost, setSelectedPost] = useState("");
+
   const updateSelectedPost = (id) => {
     if (id != null) setSelectedPost(id);
     console.log("updating ", selectedPost);

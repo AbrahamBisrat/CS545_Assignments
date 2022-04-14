@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Posts from "../components/Posts";
+import PostDetails from "./PostDetails";
 
 class Dashboard extends Component {
   render() {
@@ -11,6 +12,7 @@ class Dashboard extends Component {
           <input type="text" />
           <input type="submit" value="Change stuff" />
         </form>
+        <PostDetails />
       </div>
     );
   }
