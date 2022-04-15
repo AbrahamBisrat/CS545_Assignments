@@ -2,9 +2,7 @@ spring:
   application:
     name: Lab2
   datasource:
-    password: posgres
-    url: jdbc:mysql://potatolove.database.windows.net/waaAssigDB
-    username: postgres
+    url: {database-connection-string}
   jpa:
     hibernate:
       ddl-auto: create-drop
