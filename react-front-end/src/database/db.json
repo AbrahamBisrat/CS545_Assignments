@@ -1,0 +1,9 @@
+{
+    "posts":[
+        {"id": 123, "title": "Welcome to my new blog", "author": "the wise man" },
+        {"id": 232, "title": "Welcome to my new blog", "author": "the wise man" },
+        {"id": 435, "title": "Welcome to my new blog", "author": "the wise man" },
+        {"id": 546, "title": "Welcome to my new blog", "author": "the wise man" },
+        {"id": 874, "title": "Welcome to my new blog", "author": "the wise man" }
+    ]
+}
