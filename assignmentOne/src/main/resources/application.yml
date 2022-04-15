@@ -3,7 +3,7 @@ spring:
     name: Lab2
   datasource:
     password: posgres
-    url: jdbc:postgresql://localhost:5432/postgres-lab2-data
+    url: jdbc:mysql://potatolove.database.windows.net/waaAssigDB
     username: postgres
   jpa:
     hibernate:
