@@ -1,15 +1,27 @@
-import React, { useState, Component } from "react";
+import axios from "axios";
+import React, { useState, Component, useEffect } from "react";
 import Post from "./Post";
 
-export default function Posts({ posts, setSelectedPost }) {
-  const updateSelectedPost = (id) => {
-    if (id != null) setSelectedPost(id);
-  };
+export default function Posts() {
+  console.log("posts");
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/posts")
+      .then((res) => {
+        console.log(res);
+        setPosts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="posts">
       {posts.map((post, key) => (
-        <Post key={key} post={post} updateSelectedPost={updateSelectedPost} />
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );

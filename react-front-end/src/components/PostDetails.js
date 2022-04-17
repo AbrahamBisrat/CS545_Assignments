@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-export default function PostDetails({ post, updatePost }) {
+export default function PostDetails({ post }) {
   const editHandler = (e) => {
     e.preventDefault();
     console.log("File being editted");
