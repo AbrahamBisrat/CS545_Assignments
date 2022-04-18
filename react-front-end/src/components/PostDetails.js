@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useContext, useState } from "react";
 import axios from "axios";
+import { PostContext } from "./Posts";
 
-export default function PostDetails({ post, refresh }) {
+export default function PostDetails() {
+  const { selectedPost, setRefresh, setSelectedPost } = useContext(PostContext);
+
   const editHandler = (e) => {
     e.preventDefault();
     console.log("File being editted");
@@ -10,11 +13,12 @@ export default function PostDetails({ post, refresh }) {
   const deleteHandler = (e) => {
     e.preventDefault();
     axios
-      .delete(`/posts/${post.id}`)
+      .delete(`/posts/${selectedPost.id}`)
       .then(() => {
-        // update the display
-        refresh(Math.random());
+        setRefresh(Math.random());
         console.log("Post has been deleted");
+        // update the display
+        setSelectedPost(null);
       })
       .catch((err) => {
         console.log("Error deleting file from databse");
@@ -31,13 +35,13 @@ export default function PostDetails({ post, refresh }) {
         <input
           type="text"
           name="PostAuthor"
-          value={post.author}
+          value={selectedPost.author}
           onChange={() => console.log("content also being chnaged")}
         />
         <input
           type="text"
           name="PostTitle"
-          value={post.title}
+          value={selectedPost.title}
           onChange={() => console.log("content being changed")}
         />
 

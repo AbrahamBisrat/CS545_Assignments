@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PostContext } from "./Posts";
 let p = (text) => console.log(text);
 
-function Post({ post, selectedPost }) {
+function Post({ post }) {
+  const { setSelectedPost } = useContext(PostContext);
+
   const detailsHandler = () => {
-    console.log("selected post ", post.id);
-    selectedPost(post);
+    // console.log("selected post ", post.id);
+    setSelectedPost(post);
   };
 
   return (

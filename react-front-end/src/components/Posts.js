@@ -3,7 +3,7 @@ import React, { useState, useEffect, createContext } from "react";
 import Post from "./Post";
 import PostDetails from "./PostDetails";
 
-const PostContext = createContext(null);
+export const PostContext = createContext(null);
 
 export default function Posts(refreshFlag) {
   const [posts, setPosts] = useState([]);
@@ -27,14 +27,12 @@ export default function Posts(refreshFlag) {
   }, [refresh, refreshFlag]);
 
   return (
-    <PostContext.Provider value={{ selectedPost, setSelectedPost }}>
+    <PostContext.Provider value={{ selectedPost, setSelectedPost, setRefresh }}>
       <div className="posts">
         {posts.map((post, key) => (
-          <Post key={post.id} post={post} selectedPost={setSelectedPost} />
+          <Post key={post.id} post={post} />
         ))}
-        {selectedPost && (
-          <PostDetails post={selectedPost} refresh={setRefresh} />
-        )}
+        {selectedPost && <PostDetails />}
       </div>
     </PostContext.Provider>
   );
