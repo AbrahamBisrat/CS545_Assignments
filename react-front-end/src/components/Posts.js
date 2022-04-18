@@ -11,10 +11,6 @@ export default function Posts(refreshFlag) {
   const updateSelected = (selected) => selectedPost(selected);
   const [refresh, setRefresh] = useState(null);
 
-  // useEffect(() => {
-  //   console.log(selectedPost);
-  // }, [selectedPost]);
-
   useEffect(() => {
     axios
       .get("/posts")
