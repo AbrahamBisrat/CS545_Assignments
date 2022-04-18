@@ -3,7 +3,7 @@ import React, { useState, Component, useEffect } from "react";
 import Post from "./Post";
 import PostDetails from "./PostDetails";
 
-export default function Posts() {
+export default function Posts(refreshFlag) {
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState("");
   const updateSelected = (selected) => selectedPost(selected);
@@ -22,7 +22,7 @@ export default function Posts() {
       .catch((err) => {
         console.log(err);
       });
-  }, [refresh]);
+  }, [refresh, refreshFlag]);
 
   return (
     <div className="posts">

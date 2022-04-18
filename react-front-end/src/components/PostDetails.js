@@ -9,8 +9,6 @@ export default function PostDetails({ post, refresh }) {
 
   const deleteHandler = (e) => {
     e.preventDefault();
-    console.log("make an axios delete request to ");
-    console.log("/posts/", post.id);
     axios
       .delete(`/posts/${post.id}`)
       .then(() => {
@@ -30,7 +28,6 @@ export default function PostDetails({ post, refresh }) {
     <div className="postDetails">
       <h2>Edit or Delete post</h2>
       <form>
-        {console.log("post inside return : ", post)}
         <input
           type="text"
           name="PostAuthor"
