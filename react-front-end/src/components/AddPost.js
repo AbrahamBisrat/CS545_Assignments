@@ -1,14 +1,16 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { DashboardContex } from "./Dashboard";
 
 const AddPost = () => {
+  const authorRef = useRef(null);
+  const titleRef = useRef(null);
   const { setAddPostFlag } = useContext(DashboardContex);
 
   const saveToDB = (event) => {
     event.preventDefault();
-    let author = event.target["author"].value;
-    let title = event.target["title"].value;
+    let author = authorRef.current.value;
+    let title = titleRef.current.value;
 
     axios({
       method: "post",
@@ -20,7 +22,6 @@ const AddPost = () => {
       headers: { "Content-Type": "application/json" },
     })
       .then(() => {
-        console.log("force re-render here");
         setAddPostFlag(false);
       })
       .catch((err) => {
@@ -31,8 +32,20 @@ const AddPost = () => {
   return (
     <div className="addPost">
       <form onSubmit={saveToDB}>
-        <input type="text" name="author" placeholder="Author" required />
-        <input type="text" name="title" placeholder="Title" required />
+        <input
+          type="text"
+          name="author"
+          placeholder="Author"
+          ref={authorRef}
+          required
+        />
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          ref={titleRef}
+          required
+        />
         <input type="submit" value="Add Post" />
       </form>
     </div>
