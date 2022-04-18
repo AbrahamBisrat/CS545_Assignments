@@ -1,7 +1,10 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
+import { DashboardContex } from "./Dashboard";
 
-const AddPost = (addFlag) => {
+const AddPost = () => {
+  const { setAddPostFlag } = useContext(DashboardContex);
+
   const saveToDB = (event) => {
     event.preventDefault();
     let author = event.target["author"].value;
@@ -18,12 +21,13 @@ const AddPost = (addFlag) => {
     })
       .then(() => {
         console.log("force re-render here");
-        // addFlag(null);
+        setAddPostFlag(false);
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
+
   return (
     <div className="addPost">
       <form onSubmit={saveToDB}>
