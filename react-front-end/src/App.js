@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <Dashboard />
     </div>
   );
