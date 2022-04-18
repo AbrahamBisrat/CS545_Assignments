@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
+import axios from "axios";
 
-export default function PostDetails({ post }) {
+export default function PostDetails({ post, refresh }) {
   const editHandler = (e) => {
     e.preventDefault();
     console.log("File being editted");
@@ -8,12 +9,22 @@ export default function PostDetails({ post }) {
 
   const deleteHandler = (e) => {
     e.preventDefault();
-    console.log("File being deleted");
+    console.log("make an axios delete request to ");
+    console.log("/posts/", post.id);
+    axios
+      .delete(`/posts/${post.id}`)
+      .then(() => {
+        // update the display
+        refresh(Math.random());
+        console.log("Post has been deleted");
+      })
+      .catch((err) => {
+        console.log("Error deleting file from databse");
+        console.log(
+          "perhaps the post you are looking to delete may not exist, lol"
+        );
+      });
   };
-
-  // temp value holders
-  let author = post.at(0).author;
-  let title = post.at(0).title;
 
   return (
     <div className="postDetails">
@@ -23,13 +34,13 @@ export default function PostDetails({ post }) {
         <input
           type="text"
           name="PostAuthor"
-          value={author}
+          value={post.author}
           onChange={() => console.log("content also being chnaged")}
         />
         <input
           type="text"
           name="PostTitle"
-          value={title}
+          value={post.title}
           onChange={() => console.log("content being changed")}
         />
 
