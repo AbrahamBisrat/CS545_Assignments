@@ -7,6 +7,8 @@ const AddPost = () => {
   const titleRef = useRef(null);
   const { setAddPostFlag } = useContext(DashboardContex);
 
+  // check this comment out, why is this turning out to be more slugish than ever before
+
   const saveToDB = (event) => {
     event.preventDefault();
     let author = authorRef.current.value;
