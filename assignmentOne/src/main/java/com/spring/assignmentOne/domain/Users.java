@@ -1,6 +1,5 @@
 package com.spring.assignmentOne.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,21 +12,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Post {
+public class Users {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
-    private String title;
-    private String content;
+    private String name;
 
-    @ManyToOne()
-    @JoinColumn()
-    @JsonBackReference()
-    private Users user;
-
-    @OneToMany( mappedBy = "post", cascade = CascadeType.ALL )
+    @OneToMany( mappedBy = "user", cascade = CascadeType.ALL )
     @JsonManagedReference
-    private List<Comment> comments;
+    private List<Post> posts;
 
 }

@@ -2,24 +2,29 @@ package com.spring.assignmentOne.service;
 
 import com.spring.assignmentOne.domain.Post;
 import com.spring.assignmentOne.domain.dto.PostDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface PostService {
 
-    List<Post> getAll();
+    List<Post> findAll();
 
-    List<PostDto> getAllDto();
+//    List<PostDto> findAllDto();
 
-    Post getById(int id);
+    List<Post> findAllById(Long id);
 
-    PostDto getByIdDto(int id);
+//    PostDto findByIdDto(Long id);
 
-    boolean save(Post p);
+    void save(Post p);
 
-    void deleteById(int id);
+    void deleteById(Long id);
 
-    void updateById(int id, Post updatedPost);
+    void updateById(Long id, Post updatedPost);
 
-    List<PostDto> filterByAuthor(String author);
+//    List<PostDto> filterByAuthor(String author);
+
+    List<Post> findPostByTitle(String title);
+
 }

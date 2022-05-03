@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/v1/posts")
 public class PostController {
 
     @Autowired
@@ -31,44 +31,46 @@ public class PostController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping( headers = "X-API-VERSION=1")
     public List<Post> allPostsV1(){
-        return postService.getAll();
+        return postService.findAll();
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping( headers = "X-API-VERSION=2")
-    public List<PostDto> allPostsV2(){
-        return postService.getAllDto();
-    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @GetMapping( headers = "X-API-VERSION=2")       // versioning has changed to uri
+//    public List<PostDto> allPostsV2(){
+//        return postService.findAllDto();
+//    }
 
     @GetMapping(value = "/{id}")
-    public Post getPostById(@PathVariable int id){
-        return postService.getById(id);
+    public List<Post> getPostById(@PathVariable("id") Long id){
+        return postService.findAllById(id);
     }
 
-    @GetMapping( value = "/{id}", headers = "X-API-VERSION=2")
-    public PostDto getPostByIdDto(@PathVariable int id){
-        return postService.getByIdDto(id);
-    }
+//    @GetMapping( value = "/{id}", headers = "X-API-VERSION=2")
+//    public PostDto getPostByIdDto(@PathVariable("id") Long id){
+//        return postService.findByIdDto(id);
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "")
-    public boolean newPost(@RequestBody Post newPost){
-        return postService.save(newPost);
+    public void newPost(@RequestBody Post newPost){
+        postService.save(newPost);
     }
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updatePost(@PathVariable int id, @RequestBody Post post){
+    public void updatePost(@PathVariable Long id, @RequestBody Post post){
         postService.updateById(id, post);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{id}")
-    public void deleteById(@PathVariable int id){
+    public void deleteById(@PathVariable Long id){
         postService.deleteById(id);
     }
 
-    @GetMapping("/filter")
-    public List<PostDto> filtered(@RequestParam String author){
-        return postService.filterByAuthor(author);
-    }
+//    @GetMapping("/filter")
+//    public List<PostDto> filtered(@RequestParam String author){
+//        return postService.filterByAuthor(author);
+//    }
+
 }
