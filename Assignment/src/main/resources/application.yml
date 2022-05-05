@@ -2,21 +2,10 @@ spring:
   application:
     name: Lab2
   datasource:
-<<<<<<<< HEAD:Assignment/project_config/application.yml
-#    password: ${DB_PASSWORD}
-#    username: ${DB_USER}
-    url: jdbc:mysql://172.17.18.6:3306/waaAssigDB
-    username: reconov
-    password: reconov
-#    url: jdbc:mysql://localhost:3306/waa_assignmentDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-#    username: 'root'
-#    password: 'password'
-========
     url: jdbc:mysql://172.17.18.6:3306/waaAssigDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     password: ${DB_PASSWORD}
     username: ${DB_USER}
   #    url: jdbc:mysql://localhost:3306/waa_assignmentDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
->>>>>>>> main:Assignment/target/classes/application.yml
   jpa:
     hibernate:
       ddl-auto: update
@@ -31,13 +20,9 @@ spring:
     init:
       mode: always
   main:
-<<<<<<<< HEAD:Assignment/project_config/application.yml
-    banner-mode: "off"
-========
     banner-mode: "console"
     allow-circular-references: true
 
->>>>>>>> main:Assignment/target/classes/application.yml
 server:
   port: 4000
 
@@ -47,7 +32,4 @@ jwt:
 #logging:
 #  pattern:
 #    console:
-<<<<<<<< HEAD:Assignment/project_config/application.yml
-========
 
->>>>>>>> main:Assignment/target/classes/application.yml
