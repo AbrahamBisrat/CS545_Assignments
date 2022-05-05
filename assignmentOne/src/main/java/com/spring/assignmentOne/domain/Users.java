@@ -17,10 +17,20 @@ public class Users {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
-    private String name;
+
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private boolean enabled;
+    
 
     @OneToMany( mappedBy = "user", cascade = CascadeType.ALL )
     @JsonManagedReference
     private List<Post> posts;
+
+    @ManyToMany
+    @JoinTable
+    private List<Role> roles;
 
 }

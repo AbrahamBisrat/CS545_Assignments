@@ -30,4 +30,5 @@ public interface UsersService {
 
     Comment findCommentByUserAndPostId(Long uId, Long pId, Long cId);
 
+    Users findUserByEmail(String email);
 }
